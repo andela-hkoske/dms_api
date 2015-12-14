@@ -150,7 +150,7 @@ module.exports = {
         .end(function(err, res) {
           expect(res.status).toBe(500);
           expect(res.body.success).toBe(false);
-          expect(res.body.message.stack).toBeDefined();
+          expect(err).toBeDefined();
           done();
         });
     };
