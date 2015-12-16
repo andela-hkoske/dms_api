@@ -4,7 +4,7 @@
   "description": "Checkpoint 3",
   "main": "index.js",
   "scripts": {
-    "pretest": "node index &\nsleep 3",
+    "pretest": "node index &\nsleep 4",
     "test": "./node_modules/jasmine-node/bin/jasmine-node document-manager.spec.js --verbose || :",
     "posttest": "pkill node"
   },
