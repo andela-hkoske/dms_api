@@ -2,64 +2,50 @@ var request = require('superagent'),
   token, viewerToken, userToken;
 
 module.exports = {
-  readToken: function(done, cb) {
-    if (!token) {
-      request
-        .post('http://localhost:3000/api/users/login')
-        .send({
-          username: 'JaneDoe97',
-          password: 'JaneDoe97'
-        })
-        .end(function(err, res) {
-          if (res && !err) {
-            token = res.body.token;
-            cb(res.body.token);
-          } else {
-            done();
-          }
-        });
-    } else {
+  readAuthToken: function(role, done, cb) {
+    var user = {};
+    switch (role) {
+      case 'admin':
+        user.username = 'JaneDoe97';
+        user.password = 'JaneDoe97';
+        break;
+      case 'user':
+        user.username = 'JaneDoe98';
+        user.password = 'JaneDoe98';
+        break;
+      case 'viewer':
+        user.username = 'JaneDoe99';
+        user.password = 'JaneDoe99';
+        break;
+    }
+    if (token && role === 'admin') {
       cb(token);
-    }
-  },
-  readViewerToken: function(done, cb) {
-    if (!viewerToken) {
-      request
-        .post('http://localhost:3000/api/users/login')
-        .send({
-          username: 'JaneDoe99',
-          password: 'JaneDoe99'
-        })
-        .end(function(err, res) {
-          if (res && !err) {
-            viewerToken = res.body.token;
-            cb(res.body.token);
-          } else {
-            done();
-          }
-        });
-    } else {
-      cb(viewerToken);
-    }
-  },
-  readUserToken: function(done, cb) {
-    if (!userToken) {
-      request
-        .post('http://localhost:3000/api/users/login')
-        .send({
-          username: 'JaneDoe98',
-          password: 'JaneDoe98'
-        })
-        .end(function(err, res) {
-          if (res && !err) {
-            userToken = res.body.token;
-            cb(res.body.token);
-          } else {
-            done();
-          }
-        });
-    } else {
+    } else if (userToken && role === 'user') {
       cb(userToken);
+    } else if (viewerToken && role === 'viewer') {
+      cb(viewerToken);
+    } else {
+      request
+        .post('http://localhost:3000/api/users/login')
+        .send(user)
+        .end(function(err, res) {
+          if (res && !err) {
+            switch (role) {
+              case 'admin':
+                token = res.body.token;
+                break;
+              case 'user':
+                userToken = res.body.token;
+                break;
+              case 'viewer':
+                viewerToken = res.body.token;
+                break;
+            }
+            cb(res.body.token);
+          } else {
+            done();
+          }
+        });
     }
   }
 };
