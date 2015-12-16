@@ -68,7 +68,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   verifyRolePresent: function(done) {
@@ -89,7 +89,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   verifyNamesPresent: function(done) {
@@ -112,7 +112,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   updateUser: function(username, last, first, done) {
@@ -148,7 +148,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   deleteUser: function(username, done) {
@@ -192,7 +192,7 @@ module.exports = {
       })
       .end(function(err, res) {
         if (!err && res) {
-          Token.readToken(done, cb);
+          Token.readAuthToken('admin', done, cb);
         } else {
           done();
         }
@@ -230,7 +230,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   getSpecificUser: function(username, done) {
@@ -267,6 +267,6 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   }
 };
