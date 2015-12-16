@@ -65,7 +65,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, getRoles);
+    Token.readAuthToken('admin', done, getRoles);
   },
 
   restrictViewerDocPost: function(title, content, done) {
@@ -132,7 +132,7 @@ module.exports = {
         });
     };
 
-    Token.readViewerToken(done, getRoles);
+    Token.readAuthToken('viewer', done, getRoles);
   },
 
   createUntitledDocument: function(title, content, done) {
@@ -197,7 +197,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, getRoles);
+    Token.readAuthToken('admin', done, getRoles);
   },
 
   getAllDocuments: function(done) {
@@ -216,7 +216,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   getSpecificDocument: function(title, done) {
@@ -248,7 +248,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   restrictRolesAccess: function(title, done) {
@@ -281,7 +281,7 @@ module.exports = {
         });
     };
 
-    Token.readUserToken(done, cb);
+    Token.readAuthToken('user', done, cb);
   },
 
   getDocumentsByLimit: function(limit, done) {
@@ -298,7 +298,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   getDocumentsByType: function(type, done) {
@@ -331,7 +331,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, getType);
+    Token.readAuthToken('admin', done, getType);
   },
 
   createDocWithoutAuth: function(title, content, done) {
@@ -386,7 +386,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   deleteDocument: function(title, done) {
@@ -418,7 +418,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   restrictDelete: function(title, done) {
@@ -452,7 +452,7 @@ module.exports = {
         });
     };
 
-    Token.readUserToken(done, cb);
+    Token.readAuthToken('user', done, cb);
   },
 
   getDocumentsByRole: function(role, limit, done) {
@@ -491,7 +491,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, getRole);
+    Token.readAuthToken('admin', done, getRole);
   },
 
   getDocumentsByDate: function(title, limit, done) {
@@ -525,6 +525,6 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   }
 };
