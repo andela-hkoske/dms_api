@@ -18,7 +18,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   createUntitledType: function(title, done) {
@@ -37,7 +37,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   getAllTypes: function(done) {
@@ -54,7 +54,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   createWithoutAuth: function(title, done) {
@@ -104,7 +104,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   updateType: function(oldTitle, newTitle, done) {
@@ -139,7 +139,7 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, cb);
+    Token.readAuthToken('admin', done, cb);
   },
 
   deleteType: function(title, done) {
@@ -187,6 +187,6 @@ module.exports = {
         });
     };
 
-    Token.readToken(done, create);
+    Token.readAuthToken('admin', done, create);
   }
 };
